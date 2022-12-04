@@ -1,0 +1,63 @@
+//almacena datos de los arreglos 
+Funcion guardardatos(codprod, prod, cant, prec, grab)
+	codprod[1]="P01"; prod[1]="prod1"; cant[1]=100; prec[1]=32; grab[1]=Verdadero;
+	codprod[2]="P02"; prod[2]="prod1"; cant[2]=100; prec[2]=25; grab[2]=Verdadero;
+	codprod[3]="P03"; prod[3]="prod1"; cant[3]=100; prec[3]=16; grab[3]=Verdadero;
+	codprod[4]="P04"; prod[4]="prod1"; cant[4]=100; prec[4]=12; grab[4]=Verdadero;
+	codprod[5]="P05"; prod[5]="prod1"; cant[5]=100; prec[5]=19; grab[5]=Verdadero;
+FinFuncion
+
+//imprime datos en forma de tabla correspondientes a los arreglos definidos
+Funcion imprimirtabla(codprod,prod,cant,prec,grab,nr)
+	Escribir "==================================/";
+	Escribir "COD  PROD   CANT PREC   GRAB";
+	
+	Para k=1 Hasta nr Hacer
+		Escribir codprod[k], "  ", prod[k], "  ", cant[k], "   ", prec[k], "  ",grab[k]; 
+	FinPara
+	
+	Escribir "==================================/";
+FinFuncion
+
+//lista de precios menor a un determinado valor almacenado en la variable 'p', que se a asignado en el condicional dentro de la funcion 'prec[k]>=p'
+Funcion listadepreciosmenora(codprod,prod,cant,prec,grab,nr,p)
+	Escribir "==================================/";
+	Escribir "COD  PROD   CANT PREC   GRAB";
+	
+	Para k=1 Hasta nr Hacer
+		Si(prec[k]<=p)
+			Escribir codprod[k], "  ", prod[k], "  ", cant[k], "   ", prec[k], "  ",grab[k];
+		FinSi
+	FinPara
+	Escribir "==================================/";
+	Escribir "Todos los productos menores o iguales a precio ", p ;
+	
+FinFuncion
+
+Algoritmo Prueba_2
+	
+	Dimension codprod[5]; 
+	Dimension prod[5];
+	Dimension cant[5];
+	Dimension prec[5];
+	Dimension grab[5];
+	
+	//defino rango de los arreglos y defino el valor de p
+	Definir nr Como Entero
+	nr = 5;
+	Definir p Como Entero
+	p = 18;
+	
+	//================por si el usuario quiere elegir el filtro====================//
+	//Escribir "Elija el precio que desea filtrar"
+	//Leer puser
+	//p = puser //sustitullento esta variable en lugar de 'p' con el valor entero
+	//==========================================================================//
+	
+	// llamamos a las funciones dentro del Algoritmo 
+	
+	guardardatos(codprod, prod, cant, prec,grab);
+	imprimirtabla(codprod, prod, cant, prec,grab,nr);
+	listadepreciosmenora(codprod, prod, cant, prec,grab,nr,p);
+	
+FinAlgoritmo
